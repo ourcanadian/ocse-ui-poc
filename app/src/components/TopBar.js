@@ -18,9 +18,9 @@ function TopBar(props) {
                     <AppBar style={{backgroundColor: theme.header}}>
                         <ToolBar>
                             <Link to="/">Home</Link>
-                            {(location.pathname !== "/") && <SearchBar/>}
+                            {(location.pathname !== "/") && <div style={{padding: "0 100px"}}><SearchBar/></div>}
                             <Link to="/compare">
-                                <IconButton>
+                                <IconButton size="small" style={{position: "fixed", right: "0"}}>
                                     <CompareIcon/>
                                 </IconButton>
                             </Link>

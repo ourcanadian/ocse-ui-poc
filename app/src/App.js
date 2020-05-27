@@ -13,8 +13,6 @@ import {
   Route
 } from "react-router-dom";
 
-
-
 function App() {
   const light = require("./settings/themes/light")
   return (

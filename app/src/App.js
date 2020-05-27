@@ -4,6 +4,8 @@ import HomePage from './pages/HomePage'
 import SearchPage from './pages/SearchPage'
 import ComparePage from './pages/ComparePage'
 
+import TopBar from './components/TopBar'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,9 +17,11 @@ import {
 function App() {
   return (
     <Router>
-      <Link to="/">Home</Link>
-      <Link to="/search">Search</Link>
-      <Link to="/compare">Compare</Link>
+      <TopBar>
+        <Link to="/">Home</Link>
+        <Link to="/search">Search</Link>
+        <Link to="/compare">Compare</Link>
+      </TopBar>
       <Switch>
         <Route path="/search">
           <SearchPage/>

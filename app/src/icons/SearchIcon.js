@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Icon from '@mdi/react';
 import { mdiMagnify } from '@mdi/js';
 

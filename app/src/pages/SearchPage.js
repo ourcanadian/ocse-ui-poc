@@ -2,6 +2,7 @@ import React from 'react';
 
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
 
 import { ThemeContext } from '../components/ThemeContext'
 
@@ -10,13 +11,20 @@ function SearchPage() {
     <ThemeContext.Consumer>
         {(theme) => (
             <Box height="100vh" style={{backgroundColor: theme.background}}>
-              <Typography style={{color: theme.text.main}}>
-                SearchPage
-              </Typography>
+              <Grid
+                container
+                direction="column"
+                alignItems="center"
+                justify="space-between"
+              >
+                <Typography style={{color: theme.text.main}}>
+                  SearchPage
+                </Typography>
+              </Grid>
             </Box>
         )}
     </ThemeContext.Consumer>
-);  
+  );  
 }
 
 export default SearchPage;

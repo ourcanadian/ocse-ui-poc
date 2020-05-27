@@ -16,7 +16,7 @@ function ComparePage() {
             </Box>
         )}
     </ThemeContext.Consumer>
-);  
+  );  
 }
 
 export default ComparePage;

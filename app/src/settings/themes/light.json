@@ -1,0 +1,10 @@
+{
+    "background": "#E0D0C1",
+    "header": "#84A98C",
+    "switch": "#000000",
+    "text": {
+      "main": "#000000",
+      "dull": "#9e9e9e"
+    },
+    "_logo": "black-logo"
+}

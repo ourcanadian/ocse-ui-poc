@@ -24,11 +24,12 @@ function TopBar(props) {
                                 container
                                 direction="row"
                                 alignItems="center"
+                                justify="space-between"
                             >
                                 <Link to="/"><img src={logo} alt="Our Logo" style={{maxWidth: "75px"}}/></Link>
                                 {(location.pathname !== "/") && <div style={{padding: "0 100px"}}><SearchBar/></div>}
                                 <Link to="/compare">
-                                    <IconButton edge="end">
+                                    <IconButton>
                                         <CompareIcon/>
                                     </IconButton>
                                 </Link>

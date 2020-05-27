@@ -1,6 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import HomePage from './pages/HomePage'
+import SearchPage from './pages/SearchPage'
+import ComparePage from './pages/ComparePage'
 
 import {
   BrowserRouter as Router,
@@ -18,17 +20,16 @@ function App() {
       <Link to="/compare">Compare</Link>
       <Switch>
         <Route path="/search">
-          Search Page
+          <SearchPage/>
         </Route>
         <Route path="/compare">
-          Compare Page
+          <ComparePage/>
         </Route>
         <Route path="/">
-          Home Page
+          <HomePage/>
         </Route>
       </Switch>
     </Router>
-
   );
 }
 

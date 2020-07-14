@@ -20,9 +20,6 @@ function SearchPage() {
             alignItems="center"
             justify="space-between"
           >
-            <Typography style={{ color: theme.text.main }}>
-              SearchPage
-            </Typography>
             <ProductCard product={dummyData[0]} />
           </Grid>
         </Box>

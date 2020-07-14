@@ -22,7 +22,8 @@ const styles = {
     margin: "auto",
     textAlign: "center",
   },
-  image: {
+  card: {
+    width: "95%", 
     margin: "auto",
   }
 }
@@ -39,11 +40,12 @@ class ProductCard extends React.Component {
       <ThemeContext.Consumer>
         {(theme) => (
           <div>
-            <Card>
-              <CardHeader title={product.title} action={<IconButton><CompareIcon /></IconButton>}/>
+            <Card className={classes.card}>
+              <CardHeader title={product.title} subheader={`${product.price}.00$`} action={<IconButton><CompareIcon /></IconButton>}/>
               <CardMedia className={classes.cardMedia}><img src={product.images[0]} alt={product.title} /></CardMedia>
               <CardActions>
-                {product.images.length > 0 ? <Button>View More Images</Button> : null }
+              <Button variant="contained" color="primary">View Product</Button>
+                {product.images.length > 0 ? <Button color="primary">View More Images</Button> : null }
               </CardActions>
             </Card>
           </div>

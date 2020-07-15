@@ -1,20 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { withStyles } from '@material-ui/core/styles';
+//image carousel
+import AwesomeSlider from "react-awesome-slider";
+import "react-awesome-slider/dist/styles.css";
+
+import { withStyles } from "@material-ui/core/styles";
 import {
   Card,
   CardHeader,
   CardMedia,
-  CardContent,
-  Typography,
   CardActions,
   Button,
   IconButton,
+  DialogTitle,
+  Dialog,
 } from "@material-ui/core";
 
 import { ThemeContext } from "../components/ThemeContext";
-import CompareIcon from '../icons/CompareIcon'
+import CompareIcon from "../icons/CompareIcon";
 
 const styles = {
   cardMedia: {
@@ -23,14 +27,28 @@ const styles = {
     textAlign: "center",
   },
   card: {
-    width: "95%", 
+    marginTop: "10px",
+    width: "95%",
     margin: "auto",
+  },
+  //should change to not be px
+  slider: {
+    height: "300px",
+    width: "300px",
+  },
+  dialog: {
+    height: "330px",
+    overflow: "hidden",
   }
-}
+};
 
 class ProductCard extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      open: false,
+    };
   }
 
   render() {
@@ -41,13 +59,45 @@ class ProductCard extends React.Component {
         {(theme) => (
           <div>
             <Card className={classes.card}>
-              <CardHeader title={product.title} subheader={`${product.price}.00$`} action={<IconButton><CompareIcon /></IconButton>}/>
-              <CardMedia className={classes.cardMedia}><img src={product.images[0]} alt={product.title} /></CardMedia>
+              <CardHeader
+                title={product.title}
+                subheader={`${product.price}.00$`}
+                action={
+                  <IconButton>
+                    <CompareIcon />
+                  </IconButton>
+                }
+              />
+              <CardMedia className={classes.cardMedia}>
+                <img src={product.images[0]} alt={product.title} />
+              </CardMedia>
               <CardActions>
-              <Button variant="contained" color="primary">View Product</Button>
-                {product.images.length > 0 ? <Button color="primary">View More Images</Button> : null }
+                <Button variant="contained" color="primary">
+                  View Product
+                </Button>
+                {product.images.length > 0 ? (
+                  <Button
+                    onClick={() => this.setState({ open: true })}
+                    color="primary"
+                  >
+                    View More Images
+                  </Button>
+                ) : null}
               </CardActions>
             </Card>
+            <Dialog
+              onClose={() => this.setState({ open: false })}
+              aria-labelledby="simple-dialog-title"
+              open={this.state.open}
+            >
+              <DialogTitle className={classes.dialog} id="simple-dialog-title">
+                <AwesomeSlider className={classes.slider}>
+                  {product.images.map(image => (
+                    <div data-src={image} />
+                  ))}
+                </AwesomeSlider>
+              </DialogTitle>
+            </Dialog>
           </div>
         )}
       </ThemeContext.Consumer>

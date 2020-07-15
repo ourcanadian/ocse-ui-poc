@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 
 //image carousel
@@ -42,26 +42,20 @@ const styles = {
   }
 };
 
-class ProductCard extends React.Component {
-  constructor(props) {
-    super(props);
+function ProductCard(props) {
+  const [open, toggleDialog] = useState(false);
 
-    this.state = {
-      open: false,
-    };
-  }
-
-  render() {
-    console.log(this.props);
-    const { classes, product } = this.props;
-    return (
+  
+  const { classes, product } = props;
+  return (
+    //I'm sure theme will be needed, so I'm keeping it here
       <ThemeContext.Consumer>
         {(theme) => (
           <div>
             <Card className={classes.card}>
               <CardHeader
                 title={product.title}
-                subheader={`${product.price}.00$`}
+                subheader={`${product.price}.00$`} //might need to be changed depending how real product prices will be given. I'm assuming will have cents
                 action={
                   <IconButton>
                     <CompareIcon />
@@ -72,12 +66,12 @@ class ProductCard extends React.Component {
                 <img src={product.images[0]} alt={product.title} />
               </CardMedia>
               <CardActions>
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary"> 
                   View Product
                 </Button>
-                {product.images.length > 0 ? (
+                {product.images.length > 0 ? ( //if there are no other images, don't show the button. Might be better to show the button and disable tho?
                   <Button
-                    onClick={() => this.setState({ open: true })}
+                    onClick={() => toggleDialog(!open)}
                     color="primary"
                   >
                     View More Images
@@ -86,9 +80,9 @@ class ProductCard extends React.Component {
               </CardActions>
             </Card>
             <Dialog
-              onClose={() => this.setState({ open: false })}
+              onClose={() => toggleDialog(false)}
               aria-labelledby="simple-dialog-title"
-              open={this.state.open}
+              open={open}
             >
               <DialogTitle className={classes.dialog} id="simple-dialog-title">
                 <AwesomeSlider className={classes.slider}>
@@ -101,12 +95,11 @@ class ProductCard extends React.Component {
           </div>
         )}
       </ThemeContext.Consumer>
-    );
-  }
+  )
 }
 
 ProductCard.propTypes = {
-  product: PropTypes.object,
+  product: PropTypes.object, //should be a lot more specific than just object
 };
 
 export default withStyles(styles)(ProductCard);

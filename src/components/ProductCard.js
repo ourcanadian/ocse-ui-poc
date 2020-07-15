@@ -47,6 +47,11 @@ function ProductCard(props) {
 
   
   const { classes, product } = props;
+
+  const viewProduct = () => {
+    window.open(product.url);
+  }
+  
   return (
     //I'm sure theme will be needed, so I'm keeping it here
       <ThemeContext.Consumer>
@@ -66,7 +71,7 @@ function ProductCard(props) {
                 <img src={product.images[0]} alt={product.title} />
               </CardMedia>
               <CardActions>
-                <Button variant="contained" color="primary"> 
+                <Button variant="contained" color="primary" onClick={viewProduct}> 
                   View Product
                 </Button>
                 {product.images.length > 0 ? ( //if there are no other images, don't show the button. Might be better to show the button and disable tho?
